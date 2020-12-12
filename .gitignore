@@ -10,6 +10,8 @@ temp/**
 *.user
 *.userosscache
 *.sln.docstates
+public/bundle.js
+**/.ionide
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

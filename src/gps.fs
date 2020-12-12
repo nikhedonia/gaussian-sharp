@@ -103,6 +103,17 @@ let invertPositiveDefinite (m: Matrix) =
    
 let gauss (l:float) (x: float) (y:float) = Math.Exp( -Math.Pow(x - y, 2.0) / l ) 
 
+let periodic (l:float) (p: float) (x: float) (y:float) = 
+  let q = Math.Sin(Math.PI * Math.Abs(x-y) / p) 
+  Math.Exp(-2.0/(l*l)* q*q)
+
+let periodicGauss (l:float) (p: float) (x: float) (y:float) =
+  let g = gauss l
+  let pp = periodic l p
+
+  (g x y) * (pp x y)
+
+
 let covKernel (kernel: float->float->float) (X: seq<float>) (Y: seq<float>) =
 
   let X = X|>Seq.cache
